@@ -87,3 +87,16 @@ spleef_shovels_generic_handler:
   events:
     on player breaks block with:spleef_*_shovel:
     - determine cancelled if:!<context.material.name.equals[<script[spleef_shovels_config].data_key[spleef_block]>]>
+
+spleef_shovles_command:
+  type: command
+  debug: false
+  name: spleefshovels
+  description: Give yourself spleef shovels
+  usage: /spleefshovels
+  permission: spleefshovels.use
+  script:
+  - if <context.source_type> == PLAYER:
+    - give spleef_explosive_shovel
+    - give spleef_tunnel_shovel
+    - give spleef_tunnel_shovel
