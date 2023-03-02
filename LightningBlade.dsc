@@ -43,3 +43,14 @@ lightning_blade_handler:
     - define explosion <[config.explosion]>
     - explode <[target]> power:<[explosion.power]> fire source:<player>
     - hurt <[explosion.extra_damage]> <[target].find.living_entities.within[<[explosion.power].mul[2]>]> source:<player>
+
+lightning_blade_command:
+  type: command
+  debug: false
+  name: lightningblade
+  description: Gives you a lightning blade
+  usage: /lightningblade
+  permission: lightningblade.get
+  script:
+  - if <context.source_type> == PLAYER:
+    - give lightning_blade
