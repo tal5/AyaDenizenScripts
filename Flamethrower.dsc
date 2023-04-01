@@ -1,7 +1,16 @@
+flamethrower_config:
+  type: data
+  debug: false
+  flame:
+    # How far will the flame go
+    range: 20
+    # A safe distance from the shooter where things won't be set on fire
+    shooter_distance: 2
+
 flamethrower:
   type: item
   debug: false
-  material: goat_horn
+  material: lightning_rod
   display name: <red><italic>Flamethrower
 
 flamethrower_handler:
@@ -10,12 +19,25 @@ flamethrower_handler:
   events:
     on player right clicks block with:flamethrower:
     - determine passively cancelled
-    - repeat 50:
-      - define origin <player.location>
-      - define flameOrigin <[origin].above[1.6].right[0.7].forward[0.9].with_yaw[<player.body_yaw>].with_pitch[0]>
-      - repeat 2:
-        - repeat 50:
-          - playeffect effect:flame offset:0 at:<[flameOrigin]> velocity:<[origin].face[<[origin].forward.random_offset[0.4]>].direction.vector> visibility:20
-        - wait 3t
-      - define target <[origin].ray_trace[return=block;range=20].if_null[null]>
-      - modifyblock <[origin].forward[6].points_between[<[target]>].distance[3].parse[find_blocks[air].within[3]].combine> fire if:!<[target].equals[null]>
+    - define flameConfig <script[flamethrower_config].data_key[flame]>
+    - define range <[flameConfig.range]>
+    - define origin <player.eye_location.forward[0.8].right[0.7].down[0.3]>
+    - repeat 2:
+      - repeat 50:
+        - playeffect effect:flame offset:0 at:<[origin]> velocity:<[origin].face[<[origin].forward.random_offset[0.4]>].direction.vector> visibility:<[range]>
+      - wait 3t
+    - define target <player.eye_location.ray_trace[return=block;range=<[range]>].if_null[<player.eye_location.forward[<[range]>]>]>
+    - define shooterDistance <[flameConfig.shooter_distance]>
+    - define shooterLoc <player.location.round_down>
+    - modifyblock <[origin].points_between[<[target]>].distance[3].parse[find_blocks[air].within[3]].combine.filter[distance[<[shooterLoc]>].is_more_than[<[shooterDistance]>]]> fire
+
+flamethrower_command:
+  type: command
+  debug: false
+  name: flamethrower
+  description: Gives you the flamethrower item
+  usage: /flamethrower
+  permission: flamethrower.get
+  script:
+  - if <context.source_type> == PLAYER:
+    - give flamethrower
