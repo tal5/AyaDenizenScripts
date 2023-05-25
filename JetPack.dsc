@@ -45,3 +45,14 @@ jetpack_check:
   debug: false
   script:
   - stop if:!<player.equipment_map.get[chestplate].script.name.equals[jetpack_item].if_null[false]>
+
+jetpack_command:
+  type: command
+  debug: false
+  name: get-jetpack
+  description: Gives you a jetpack
+  usage: /get-jetpack
+  permission: jetpack.get
+  script:
+  - if <context.source_type> == PLAYER:
+    - give jetpack_item
