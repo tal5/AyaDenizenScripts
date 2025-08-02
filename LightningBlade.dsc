@@ -1,18 +1,18 @@
 lightning_blade_data:
   type: data
   debug: false
-  # For the sake of the color, Denizen escpaing is used, so &ns is # - see https://meta.denizenscript.com/Docs/Search/escaping%20system
+  # For the color, Denizen escpaing is used, so &ns is # - see https://meta.denizenscript.com/Docs/Search/escaping%20system
   lightning_color: &nsFDD023
   maximum_distance: 100
   explosion:
-    power: 6
-    extra_damage: 20
+    power: 2
+    extra_damage: 40
 
 lightning_blade:
   type: item
   debug: false
   material: diamond_sword
-  display name: <aqua><bold><italic>Lightning Blade
+  display name: <yellow><bold><italic>Lightning Blade
 
 lightning_blade_handler:
   type: world
