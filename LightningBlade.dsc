@@ -6,13 +6,13 @@ lightning_blade_data:
   maximum_distance: 100
   explosion:
     power: 2
-    extra_damage: 40
+    extra_damage: 20
 
 lightning_blade:
   type: item
   debug: false
-  material: diamond_sword
-  display name: <yellow><bold><italic>Lightning Blade
+  material: netherite_sword
+  display name: <red><bold><italic>Lightning Blade
 
 lightning_blade_handler:
   type: world
