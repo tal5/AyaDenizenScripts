@@ -52,7 +52,7 @@ laser_blaster_command:
   type: command
   debug: false
   name: laser-blaster
-  description: Gives you the laser blaster
+  description: Gives you a laser blaster
   usage: /laser-blaster
   permission: laser-blaster.get
   script:
