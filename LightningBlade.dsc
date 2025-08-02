@@ -5,7 +5,7 @@ lightning_blade_data:
   lightning_color: &nsFDD023
   maximum_distance: 100
   explosion:
-    power: 2
+    power: 6
     extra_damage: 20
 
 lightning_blade:
