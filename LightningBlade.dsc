@@ -50,7 +50,7 @@ lightning_blade_command:
   name: lightningblade
   description: Gives you a lightning blade
   usage: /lightningblade
-  permission: lightningblade.get
+  permission: lightning_blade.get
   script:
   - if <context.source_type> == PLAYER:
     - give lightning_blade
