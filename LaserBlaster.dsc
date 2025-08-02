@@ -17,6 +17,7 @@ laser_blaster_beam:
   entity_type: block_display
   mechanisms:
     material: redstone_block
+    # TODO: update this
     display_entity_data:
       transformation_translation: 0,0,0
       transformation_scale: 0.05,0.05,1
