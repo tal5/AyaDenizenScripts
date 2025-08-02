@@ -20,7 +20,7 @@ lightning_blade_handler:
   events:
     after player right clicks block with:lightning_blade:
     - ratelimit <player> 5t
-    - define config <script[lightning_blade_data].data_key[]>
+    - define config <script[lightning_blade_data].data_key[<empty>]>
     - define maxDistance <[config.maximum_distance]>
     - define target <player.target.within[<[maxDistance]>].location.above.if_null[<player.cursor_on_solid[<[maxDistance]>].if_null[null]>]>
     - if <[target]> == null:
